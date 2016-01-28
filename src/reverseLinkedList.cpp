@@ -12,12 +12,23 @@ NOTES:
 */
 
 #include <stdio.h>
-
+#include<malloc.h>
 struct node {
 	int num;
 	struct node *next;
 };
-
+struct node*result;
 struct node * reverseLinkedList(struct node *head) {
-	return NULL;
+	struct node *temp, *p;
+	temp = head;
+	p = NULL;
+	while (temp != NULL)
+	{
+		struct node *result = (struct node*)malloc(sizeof(struct node*));
+		result->num = temp->num;
+		temp = temp->next;
+		result->next = p;
+		p = result;
+	}
+	return p;
 }

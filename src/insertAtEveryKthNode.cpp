@@ -18,7 +18,7 @@ struct node {
 	int num;
 	struct node *next;
 };
-
+void insert_pos(int pos, int value, struct node *head);
 struct node * insertAtEveryKthNode(struct node *head, int K) {
 	return NULL;
 }
