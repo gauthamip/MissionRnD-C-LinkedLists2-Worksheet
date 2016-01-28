@@ -20,41 +20,45 @@ struct node {
 }*p,*prev;
 
 int linkedListMedian(struct node *head) {
-	int len = 0, pos, i = 1;
-	float med;
-	p = (struct node*)malloc(sizeof(struct node*));
-	p = head;
-	while (p != NULL)
-	{
-		p = p->next;
-		len++;
-	}
-	p = head;
-	if (len % 2 != 0)
-	{
-		pos = (len + 1) / 2;
-		while (i < pos)
-		{
-			prev = p;
-			p = p->next;
-			i++;
-		}
-		med = p->num;
-	}
+	if (head == NULL)
+		return -1;
 	else
 	{
-		pos = len / 2;
-		while (i<pos)
+		int len = 0, pos, i = 1;
+		float med;
+		p = (struct node*)malloc(sizeof(struct node*));
+		p = head;
+		while (p != NULL)
 		{
-			prev = p;
 			p = p->next;
-			i++;
+			len++;
 		}
-		med = p->num;
-		p = p->next;
-		med = med + p->num;
-		med = med / 2;
+		p = head;
+		if (len % 2 != 0)
+		{
+			pos = (len + 1) / 2;
+			while (i < pos)
+			{
+				prev = p;
+				p = p->next;
+				i++;
+			}
+			med = p->num;
+		}
+		else
+		{
+			pos = len / 2;
+			while (i < pos)
+			{
+				prev = p;
+				p = p->next;
+				i++;
+			}
+			med = p->num;
+			p = p->next;
+			med = med + p->num;
+			med = med / 2;
+		}
+		return med;
 	}
-	return med;
 }
-
