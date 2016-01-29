@@ -18,7 +18,24 @@ struct node {
 	int num;
 	struct node *next;
 };
-void insert_pos(int pos, int value, struct node *head);
 struct node * insertAtEveryKthNode(struct node *head, int K) {
-	return NULL;
+	struct node *p, *result;
+	p = head;
+	result = p;
+	int i = 0;
+	while (p != NULL)
+	{
+		i++;
+		if (i == K)
+		{
+			struct node* t = (struct node*)malloc(sizeof(struct node*));
+			t->num = K;
+			t->next = p->next;
+			p->next = t;
+			i = -1;
+		}
+		p = p->next;
+	}
+
+	return head;
 }
